@@ -17,14 +17,22 @@ import { CaloriePipe } from './calorie.pipe';
       <option value="healthy">Less Than 500 Calories</option>
       <option value="unhealthy">More Than 500 Calories</option>
     </select>
-    <div>
-      <meal-display *ngFor="#currentMeal of mealList | calorieSelect:filterCalorie"
+    <div *ngFor="#currentMeal of mealList | calorieSelect:filterCalorie; #i=index">
+      <div *ngIf="i-1 < 0">
+        <hr>
+        <h2 class="dateHead">{{ currentMeal.date }}</h2>
+      </div>
+      <div *ngIf="i-1 >= 0">
+        <hr *ngIf="currentMeal.date != mealList[i-1].date">
+        <h2 *ngIf="currentMeal.date != mealList[i-1].date" class="dateHead">{{ currentMeal.date }}</h2>
+      </div>
+      <meal-display
         (click)="mealClicked(currentMeal)"
         [class.selected]="currentMeal === selectedMeal"
-        [meal]="currentMeal" [mealList]="mealList"
-        (detailsShowing)="editorToggle($event)">
+        [meal]="currentMeal" [mealList]="mealList">
       </meal-display>
     </div>
+    <hr>
     <div class="addedit">
       <div class="col-md-6 addMeal">
         <new-meal (onSubmitNewMeal)="createMeal($event)">
@@ -77,4 +85,8 @@ export class MealListComponent {
     });
   }
 
+  // public ngOnInit(): any {
+  //   console.log(this.mealList);
+  //   this.dateHeader = this.mealList[0].date;
+  // }
 }

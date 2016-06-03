@@ -3,7 +3,7 @@ import { Meal } from './meal.model';
 
 @Component({
   selector: 'meal-display',
-  inputs: ['meal'],
+  inputs: ['meal', 'mealList'],
   template: `
     <h3>{{ meal.name }}</h3>
       <ul class="mealDetails">
@@ -15,4 +15,5 @@ import { Meal } from './meal.model';
 })
 export class MealComponent {
   public meal: Meal;
+  public mealList: Meal[];
 }
