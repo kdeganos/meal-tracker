@@ -7,11 +7,19 @@ import { Meal } from './meal.model';
   template:`
     <div class="meal-form">
       <h3>Add a Meal</h3>
-      <label class="col-sm-6" for="newName">Name</label><input class="col-sm-6 input-lg cd-form" #newName>
-      <label class="col-sm-6" for="newDetails">Details</label><input class="col-sm-6 input-lg cd-form" #newDetails>
-      <label class="col-sm-6" for="newCalories">Calories</label><input class="col-sm-6 input-lg cd-form" type="number" #newCalories>
-      <label class="col-sm-6" for="newDate">Date</label><input class="col-sm-6 input-lg cd-form" type="date" #newDate>
-      <button (click)="addMeal(newName, newDetails, newCalories, newDate)" class="col-sm-6 btn-success btn-lg add-button addMeal">Add</button>
+      <label class="col-sm-6" for="newName">Name</label>
+      <input class="col-sm-6 input-lg cd-form" #newName>
+
+      <label class="col-sm-6" for="newDetails">Details</label>
+      <input class="col-sm-6 input-lg cd-form" #newDetails>
+
+      <label class="col-sm-6" for="newCalories">Calories</label>
+      <input class="col-sm-6 input-lg cd-form" type="number" #newCalories>
+
+      <label class="col-sm-6" for="newDate">Date</label>
+      <input class="col-sm-6 input-lg cd-form" type="date" #newDate>
+
+      <button (click)="addMeal(newName, newDetails, newCalories, newDate)" class="btn btn-success addMeal">Add</button>
     </div>
   `
 })

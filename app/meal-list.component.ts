@@ -79,6 +79,7 @@ export class MealListComponent {
     this.getAverageDailyCalories()
   }
   mealClicked(clickedMeal: Meal): void {
+    this.editorOpen = true;
     this.selectedMeal = clickedMeal;
     this.onMealSelect.emit(clickedMeal);
   }
