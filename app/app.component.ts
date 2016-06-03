@@ -19,9 +19,18 @@ export class AppComponent {
   public meals: Meal[];
   constructor() {
     this.meals = [
-      new Meal("Hamburger", "Didn't get a soda or cheese on my burger!", 354),
-      new Meal("Fries", "I only ate half of them.", 365),
-      new Meal("Pizza", "I ate an entire medium pizza.", 2500)
+      new Meal("Hamburger", "Didn't get a soda or cheese on my burger!", 354, "2016-06-01"),
+      new Meal("Fries", "I only ate half of them.", 365, "2016-06-02"),
+      new Meal("Pizza", "I ate an entire medium pizza.", 2500, "2016-06-01")
     ];
+    this.meals.sort(function (a, b) {
+      if (a.date > b.date) {
+        return 1;
+      }
+      if (a.date < b.date) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }

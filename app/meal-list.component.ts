@@ -17,12 +17,14 @@ import { CaloriePipe } from './calorie.pipe';
       <option value="healthy">Less Than 500 Calories</option>
       <option value="unhealthy">More Than 500 Calories</option>
     </select>
-    <meal-display *ngFor="#currentMeal of mealList | calorieSelect:filterCalorie"
-      (click)="mealClicked(currentMeal)"
-      [class.selected]="currentMeal === selectedMeal"
-      [meal]="currentMeal" [mealList]="mealList"
-      (detailsShowing)="editorToggle($event)">
-    </meal-display>
+    <div>
+      <meal-display *ngFor="#currentMeal of mealList | calorieSelect:filterCalorie"
+        (click)="mealClicked(currentMeal)"
+        [class.selected]="currentMeal === selectedMeal"
+        [meal]="currentMeal" [mealList]="mealList"
+        (detailsShowing)="editorToggle($event)">
+      </meal-display>
+    </div>
     <div class="addedit">
       <div class="col-md-6 addMeal">
         <new-meal (onSubmitNewMeal)="createMeal($event)">
@@ -50,16 +52,29 @@ export class MealListComponent {
   }
   createMeal(meal: Meal): void {
     this.mealList.push(meal);
+    this.sortMeals();
   }
   mealClicked(clickedMeal: Meal): void {
     this.selectedMeal = clickedMeal;
     this.onMealSelect.emit(clickedMeal);
   }
-  onChange(filterOption) {
+  onChange(filterOption): void {
     this.filterCalorie = filterOption;
   }
-  hideEditor(){
+  hideEditor(): void {
     this.editorOpen = false;
+    this.sortMeals();
+  }
+  sortMeals(): void {
+    this.mealList.sort(function (a, b) {
+      if (a.date > b.date) {
+        return 1;
+      }
+      if (a.date < b.date) {
+        return -1;
+      }
+      return 0;
+    });
   }
 
 }

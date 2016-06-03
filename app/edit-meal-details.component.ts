@@ -10,6 +10,7 @@ import { Meal } from './meal.model';
     <label class="col-sm-6" for="mealName">Name</label><input class="col-sm-6 input-lg cd-form" [(ngModel)]="meal.name">
     <label class="col-sm-6" for="mealDetails">Details</label><input class="col-sm-6 input-lg cd-form" [(ngModel)]="meal.details">
     <label class="col-sm-6" for="mealCalories">Calories</label><input class="col-sm-6 input-lg cd-form" type="number" [(ngModel)]="meal.calories">
+    <label class="col-sm-6" for="mealDate">Date</label><input class="col-sm-6 input-lg cd-form" type="date" [(ngModel)]="meal.date">
   </div>
   `
 })
